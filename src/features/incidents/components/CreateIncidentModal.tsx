@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CreateIncidentInput, IncidentSeverity, User } from "../../api";
 import { severityOptions } from "../utils/incidentConstants";
 import { buttonBase, buttonBlue, buttonCard, fieldBase } from "../utils/incidentStyles";
@@ -18,6 +18,7 @@ export function CreateIncidentModal({
   saving,
   error,
 }: CreateModalProps) {
+  const titleInputRef = useRef<HTMLInputElement>(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [severity, setSeverity] = useState<IncidentSeverity>("Low");
@@ -33,6 +34,10 @@ export function CreateIncidentModal({
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [onClose]);
+
+  useEffect(() => {
+    titleInputRef.current?.focus();
+  }, []);
 
   const validate = () => {
     const nextErrors: string[] = [];
@@ -52,13 +57,19 @@ export function CreateIncidentModal({
         className="absolute inset-0 bg-white backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="relative z-10 w-[min(720px,92vw)] rounded-none bg-white p-8 shadow-[0_30px_80px_rgba(10,24,40,0.25)]">
+      <div
+        className="relative z-10 w-[min(720px,92vw)] rounded-none bg-white p-8 shadow-[0_30px_80px_rgba(10,24,40,0.25)]"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="create-incident-title"
+        aria-describedby="create-incident-description"
+      >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h2 className="text-lg font-extrabold text-danskeblue">
+            <h2 className="text-lg font-extrabold text-danskeblue" id="create-incident-title">
               New incident
             </h2>
-            <p className="mt-1 text-sm text-danskeblue">
+            <p className="mt-1 text-sm text-danskeblue" id="create-incident-description">
               Capture a crisp summary and assign an owner.
             </p>
           </div>
@@ -92,7 +103,7 @@ export function CreateIncidentModal({
               value={title}
               onChange={(event) => setTitle(event.target.value)}
               placeholder="Describe the issue"
-              autoFocus
+              ref={titleInputRef}
             />
           </label>
 
