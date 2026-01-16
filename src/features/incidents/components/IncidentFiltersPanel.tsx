@@ -17,8 +17,8 @@ export function IncidentFiltersPanel({
   onReset,
 }: IncidentFiltersPanelProps) {
   return (
-    <aside className="animate-panel rounded-none bg-white p-6 shadow-soft">
-      <h2 className="mb-4 text-lg font-bold text-danskeblue">Filters</h2>
+    <aside className="animate-panel rounded-none bg-[#EBEBE6] p-6 shadow-soft">
+      <h2 className="mb-4 text-lg font-extrabold text-danskeblue">Filters</h2>
       <div className="flex flex-col gap-4 text-sm text-danskeblue">
         <label className="flex flex-col gap-1.5">
           <span>Search by title</span>
@@ -120,7 +120,7 @@ export function IncidentFiltersPanel({
           </select>
         </label>
 
-        <button className={`${buttonBase} ${buttonBlue}`} type="button" onClick={onReset}>
+        <button className={`${buttonBase} ${buttonBlue} self-start w-auto !px-3 !py-3 leading-none`} type="button" onClick={onReset}>
           Reset filters
         </button>
       </div>

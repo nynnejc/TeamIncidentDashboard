@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { CreateIncidentInput, Incident, UpdateIncidentInput, User } from "../../api";
+import stormComing from "../../assets/img/storm-coming.jpg";
 import { CreateIncidentModal } from "./components/CreateIncidentModal";
 import { IncidentDetailPanel } from "./components/IncidentDetailPanel";
 import { IncidentFiltersPanel } from "./components/IncidentFiltersPanel";
@@ -241,12 +242,23 @@ export function IncidentDashboard() {
 
   return (
     <div className="flex flex-col gap-8">
-      <IncidentHeader
-        onNewIncident={() => {
-          setCreateState({ saving: false, error: null });
-          setCreateOpen(true);
-        }}
-      />
+      <div className="flex flex-col gap-2 lg:flex-row lg:items-stretch lg:gap-2">
+        <div className="lg:h-full lg:w-3/5">
+          <IncidentHeader
+            onNewIncident={() => {
+              setCreateState({ saving: false, error: null });
+              setCreateOpen(true);
+            }}
+          />
+        </div>
+        <div className="hidden lg:flex lg:h-full lg:w-2/5">
+          <img
+            className="h-56 w-full rounded-none object-cover shadow-soft"
+            src={stormComing}
+            alt="Storm clouds over the horizon"
+          />
+        </div>
+      </div>
 
       <section className="grid gap-6 lg:grid-cols-[minmax(240px,280px)_minmax(360px,1fr)_minmax(280px,360px)]">
         <IncidentFiltersPanel
