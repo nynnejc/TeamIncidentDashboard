@@ -1,10 +1,9 @@
 # Team Incident Dashboard
 
-A small incident management UI built with React + TypeScript on Vite.
+A small incident management UI built with React and TypeScript on Vite.
 
 ## How to run
 
-Prereqs: Node.js 18+, npm.
 
 ```bash
 npm install
@@ -45,16 +44,9 @@ src/
 
 ## Trade-offs & limitations
 
-- No focus trap or return-to-trigger handling in the modal; would add with more time.
+- Modal focus trapping and return-to-trigger handling are not implemented yet.
 - Styling is Tailwind-only; would extract reusable variants if the design system expands.
 - Mock API only; no real persistence beyond localStorage in the starter mock.
-
-## Screenshots
-
-<img src="docs/screenshots/desktop.png" alt="Desktop view" />
-
-<img src="docs/screenshots/mobile1.png" alt="Mobile view 1" />
-<img src="docs/screenshots/mobile2.png" alt="Mobile view 2" />
 
 ## Tooling / AI usage
 
@@ -64,9 +56,21 @@ src/
 
 ## What I'd add if I had more time
 
+- Hosting / cloud storage
 - CI/CD pipeline
-- Real data
+- Real API data instead of hardcoding
 - Data visualization giving better overview of status and severity of ticket flow
 - Frontend tests
 - UI component library
 - Optimize for better accesability
+- More details and styling to error messages
+
+## Screenshots
+
+### Desktop:
+<img src="docs/screenshots/desktop.png" alt="Desktop view" />
+
+### Mobile:
+<img src="docs/screenshots/mobile1.png" alt="Mobile view 1" />
+<img src="docs/screenshots/mobile2.png" alt="Mobile view 2" />
+
