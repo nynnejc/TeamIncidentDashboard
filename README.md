@@ -28,7 +28,7 @@ npm test
 - **Styling**: Tailwind classes with shared style tokens in `src/features/incidents/utils/incidentStyles.ts`; global defaults in `src/index.css`.
 - **Accessibility**: Semantic HTML, button elements for actions, labeled form controls, and dialog role/labels for the create modal.
 
-## Project structure (relevant)
+## Project structure
 
 ```
 src/
@@ -58,4 +58,15 @@ src/
 
 ## Tooling / AI usage
 
-- Used AI assistance for refactors and iterative styling tweaks.
+- Used AI assistance for 
+- refactors
+- iterative styling tweaks
+
+## What I'd add if I had more time
+
+- CI/CD pipeline
+- Real data
+- Data visualization giving better overview of status and severity of ticket flow
+- Frontend tests
+- UI component library
+- Optimize for better accesability
