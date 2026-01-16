@@ -29,28 +29,30 @@ export function IncidentQueue({
   onSelect,
 }: IncidentQueueProps) {
   return (
-    <div className="animate-panel rounded-none bg-white p-6 shadow-soft">
+    <div className="animate-panel rounded-none bg-white p-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 className="text-lg font-bold text-danskeblue">Incident queue</h2>
-          <p className="text-sm text-danskeblue">
+          <h2 className="text-lg font-bold">Incident queue</h2>
+          <p className="text-sm">
             Showing {filteredIncidents.length} of {incidentsCount} alerts
           </p>
         </div>
         <button
-          className={`${buttonBase} ${buttonCard}`}
+          className={`${buttonBase} ${buttonCard} flex items-center justify-center gap-2`}
           type="button"
           onClick={onRefresh}
           disabled={loading}
         >
-          {loading ? "Refreshing..." : "Refresh"}
+          {loading ? <span className="spinner" aria-hidden="true" /> : null}
+          <span>{loading ? "Refreshing..." : "Refresh"}</span>
         </button>
       </div>
 
       <div className="mt-6">
         {loading ? (
-          <div className="rounded-none bg-white p-4 text-sm text-danskeblue" role="status" aria-live="polite">
-            Loading incidents...
+          <div className="flex items-center gap-2 rounded-none bg-white p-4 text-sm" role="status" aria-live="polite">
+            <span className="spinner" aria-hidden="true" />
+            <span>Loading incidents...</span>
           </div>
         ) : error ? (
           <div className="flex flex-col gap-3 rounded-none border border-rose-200 bg-white p-4 text-sm text-rose-700" role="alert">
@@ -60,7 +62,7 @@ export function IncidentQueue({
             </button>
           </div>
         ) : filteredIncidents.length === 0 ? (
-          <div className="rounded-none bg-white p-4 text-sm text-danskeblue">
+          <div className="rounded-none bg-white p-4 text-sm">
             No incidents match your filters.
           </div>
         ) : (
@@ -81,10 +83,10 @@ export function IncidentQueue({
                   >
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                       <div>
-                        <h3 className="text-base font-extrabold text-danskeblue">
+                        <h3 className="text-base font-extrabold">
                           {incident.title}
                         </h3>
-                        <p className="text-xs text-danskeblue">
+                        <p className="text-xs">
                           {formatDate(incident.createdAt)}
                         </p>
                       </div>
@@ -105,7 +107,7 @@ export function IncidentQueue({
                         </span>
                       </div>
                     </div>
-                    <div className="mt-3 flex flex-col gap-2 text-xs text-danskeblue sm:flex-row sm:items-center sm:justify-between">
+                    <div className="mt-3 flex flex-col gap-2 text-xs sm:flex-row sm:items-center sm:justify-between">
                       <span>
                         Assignee: {getAssigneeName(users, incident.assigneeId)}
                       </span>

@@ -241,7 +241,7 @@ export function IncidentDashboard() {
   };
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 text-danskeblue">
       <div className="flex flex-col gap-2 lg:flex-row lg:items-stretch lg:gap-2">
         <div className="lg:h-full lg:w-3/5">
           <IncidentHeader
@@ -253,7 +253,7 @@ export function IncidentDashboard() {
         </div>
         <div className="hidden lg:flex lg:h-full lg:w-2/5">
           <img
-            className="h-56 w-full rounded-none object-cover shadow-soft"
+            className="h-56 w-full rounded-none object-cover"
             src={stormComing}
             alt="Storm clouds over the horizon"
           />
@@ -287,7 +287,7 @@ export function IncidentDashboard() {
           onSelect={(id) => setSelectedId(id)}
         />
 
-        <aside className="animate-panel rounded-none bg-white p-6 shadow-soft">
+        <aside className="animate-panel rounded-none bg-white p-6">
           <IncidentDetailPanel
             incident={detail}
             users={users}

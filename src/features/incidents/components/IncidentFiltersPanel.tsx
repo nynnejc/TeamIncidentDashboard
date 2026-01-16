@@ -17,9 +17,9 @@ export function IncidentFiltersPanel({
   onReset,
 }: IncidentFiltersPanelProps) {
   return (
-    <aside className="animate-panel rounded-none bg-[#EBEBE6] p-6 shadow-soft">
-      <h2 className="mb-4 text-lg font-extrabold text-danskeblue">Filters</h2>
-      <div className="flex flex-col gap-4 text-sm text-danskeblue">
+    <aside className="animate-panel rounded-none bg-[#EBEBE6] p-6">
+      <h2 className="mb-4 text-lg font-extrabold">Filters</h2>
+      <div className="flex flex-col gap-4 text-sm">
         <label className="flex flex-col gap-1.5">
           <span>Search by title</span>
           <input

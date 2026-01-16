@@ -58,7 +58,7 @@ export function CreateIncidentModal({
         onClick={onClose}
       />
       <div
-        className="relative z-10 w-[min(720px,92vw)] rounded-none bg-white p-8 shadow-[0_30px_80px_rgba(10,24,40,0.25)]"
+        className="relative z-10 w-[min(720px,92vw)] rounded-none bg-white p-8"
         role="dialog"
         aria-modal="true"
         aria-labelledby="create-incident-title"
@@ -66,10 +66,10 @@ export function CreateIncidentModal({
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h2 className="text-lg font-extrabold text-danskeblue" id="create-incident-title">
+            <h2 className="text-lg font-extrabold" id="create-incident-title">
               New incident
             </h2>
-            <p className="mt-1 text-sm text-danskeblue" id="create-incident-description">
+            <p className="mt-1 text-sm" id="create-incident-description">
               Capture a crisp summary and assign an owner.
             </p>
           </div>
@@ -95,7 +95,7 @@ export function CreateIncidentModal({
             });
           }}
         >
-          <label className="flex flex-col gap-1.5 text-sm text-danskeblue">
+          <label className="flex flex-col gap-1.5 text-sm">
             <span>Title</span>
             <input
               className={fieldBase}
@@ -107,7 +107,7 @@ export function CreateIncidentModal({
             />
           </label>
 
-          <label className="flex flex-col gap-1.5 text-sm text-danskeblue">
+          <label className="flex flex-col gap-1.5 text-sm">
             <span>Description</span>
             <textarea
               className={fieldBase}
@@ -119,7 +119,7 @@ export function CreateIncidentModal({
           </label>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <label className="flex flex-col gap-1.5 text-sm text-danskeblue">
+            <label className="flex flex-col gap-1.5 text-sm">
               <span>Severity</span>
               <select
                 className={fieldBase}
@@ -136,7 +136,7 @@ export function CreateIncidentModal({
               </select>
             </label>
 
-            <label className="flex flex-col gap-1.5 text-sm text-danskeblue">
+            <label className="flex flex-col gap-1.5 text-sm">
               <span>Assignee</span>
               <select
                 className={fieldBase}
@@ -177,11 +177,12 @@ export function CreateIncidentModal({
               Cancel
             </button>
             <button
-              className={`${buttonBase} ${buttonBlue}`}
+              className={`${buttonBase} ${buttonBlue} flex items-center justify-center gap-2`}
               type="submit"
               disabled={saving}
             >
-              {saving ? "Creating..." : "Create incident"}
+              {saving ? <span className="spinner" aria-hidden="true" /> : null}
+              <span>{saving ? "Creating..." : "Create incident"}</span>
             </button>
           </div>
         </form>

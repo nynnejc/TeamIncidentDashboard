@@ -49,10 +49,10 @@ export function IncidentDetailPanel({
     <div className="flex flex-col gap-4">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <h2 className="text-lg font-extrabold text-danskeblue">
+          <h2 className="text-lg font-extrabold">
             Incident detail
           </h2>
-          <p className="text-xs text-danskeblue">
+          <p className="text-xs">
             Updates flow to the live queue.
           </p>
         </div>
@@ -67,58 +67,59 @@ export function IncidentDetailPanel({
       </div>
 
       {loading ? (
-        <div className="rounded-none bg-white p-4 text-sm text-danskeblue" role="status" aria-live="polite">
-          Loading incident details...
+        <div className="flex items-center gap-2 rounded-none bg-white p-4 text-sm" role="status" aria-live="polite">
+          <span className="spinner" aria-hidden="true" />
+          <span>Loading incident details...</span>
         </div>
       ) : error ? (
         <div className="rounded-none border border-rose-200 bg-white p-4 text-sm text-rose-700" role="alert">
           {error}
         </div>
       ) : !incident ? (
-        <div className="rounded-none bg-white p-4 text-sm text-danskeblue">
+        <div className="rounded-none p-4 text-sm">
           Select an incident to see full details and update status.
         </div>
       ) : (
         <div className="flex flex-col gap-4">
           <div className="rounded-none bg-white p-4">
             <div>
-              <h3 className="text-base font-extrabold text-danskeblue">
+              <h3 className="text-base font-extrabold">
                 {incident.title}
               </h3>
-              <p className="mt-2 text-sm text-danskeblue">
+              <p className="mt-2 text-sm">
                 {incident.description}
               </p>
             </div>
-            <div className="mt-4 grid grid-cols-2 gap-3 text-sm text-danskeblue">
+            <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
               <div>
-                <p className="text-[0.65rem] uppercase tracking-[0.1em] text-danskeblue">
+                <p className="text-[0.65rem] uppercase tracking-[0.1em]">
                   Created
                 </p>
-                <p className="text-sm text-danskeblue">
+                <p className="text-sm">
                   {formatDate(incident.createdAt)}
                 </p>
               </div>
               <div>
-                <p className="text-[0.65rem] uppercase tracking-[0.1em] text-danskeblue">
+                <p className="text-[0.65rem] uppercase tracking-[0.1em]">
                   Last update
                 </p>
-                <p className="text-sm text-danskeblue">
+                <p className="text-sm">
                   {formatDate(incident.updatedAt)}
                 </p>
               </div>
               <div>
-                <p className="text-[0.65rem] uppercase tracking-[0.1em] text-danskeblue">
+                <p className="text-[0.65rem] uppercase tracking-[0.1em]">
                   Severity
                 </p>
-                <p className="text-sm text-danskeblue">
+                <p className="text-sm">
                   {incident.severity}
                 </p>
               </div>
               <div>
-                <p className="text-[0.65rem] uppercase tracking-[0.1em] text-danskeblue">
+                <p className="text-[0.65rem] uppercase tracking-[0.1em]">
                   Current status
                 </p>
-                <p className="text-sm text-danskeblue">
+                <p className="text-sm">
                   {incident.status}
                 </p>
               </div>
@@ -136,11 +137,11 @@ export function IncidentDetailPanel({
               });
             }}
           >
-            <h4 className="text-sm font-extrabold text-danskeblue">
+            <h4 className="text-sm font-extrabold">
               Update ownership
             </h4>
             <div className="mt-3 grid gap-3 sm:grid-cols-2">
-              <label className="flex flex-col gap-1.5 text-sm text-danskeblue">
+              <label className="flex flex-col gap-1.5 text-sm">
                 <span>Status</span>
                 <select
                   className={fieldBase}
@@ -157,7 +158,7 @@ export function IncidentDetailPanel({
                 </select>
               </label>
 
-              <label className="flex flex-col gap-1.5 text-sm text-danskeblue">
+              <label className="flex flex-col gap-1.5 text-sm">
                 <span>Assignee</span>
                 <select
                   className={fieldBase}
@@ -190,20 +191,20 @@ export function IncidentDetailPanel({
           </form>
 
           <div className="rounded-none bg-white p-4">
-            <h4 className="text-sm font-extrabold text-danskeblue">
+            <h4 className="text-sm font-extrabold">
               Status history
             </h4>
-            <ul className="mt-3 flex flex-col gap-2 text-xs text-danskeblue">
+            <ul className="mt-3 flex flex-col gap-2 text-xs">
               {incident.statusHistory.map((entry) => (
                 <li
                   key={`${entry.status}-${entry.changedAt}`}
                   className="grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-none bg-white p-3"
                 >
-                  <span className="text-xs font-extrabold text-danskeblue">
+                  <span className="text-xs font-extrabold">
                     {entry.status}
                   </span>
                   <span>{formatDate(entry.changedAt)}</span>
-                  <span className="text-[0.7rem] text-danskeblue">
+                  <span className="text-[0.7rem]">
                     {users.find((user) => user.id === entry.changedBy)?.name ??
                       entry.changedBy}
                   </span>

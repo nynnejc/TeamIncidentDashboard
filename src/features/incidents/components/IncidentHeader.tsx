@@ -6,7 +6,7 @@ type IncidentHeaderProps = {
 
 export function IncidentHeader({ onNewIncident }: IncidentHeaderProps) {
   return (
-    <header className="flex h-full w-full flex-col gap-6 rounded-none bg-[#002346] p-10 shadow-soft lg:h-56 lg:flex-row lg:items-center lg:justify-between">
+    <header className="flex h-full w-full flex-col gap-6 rounded-none bg-[#002346] p-10 lg:h-56 lg:flex-row lg:items-center lg:justify-between">
       <div className="flex flex-col gap-4">
         <div className="space-y-1">
           <h1 className="font-serif text-3xl text-white font-extrabold sm:text-4xl">
