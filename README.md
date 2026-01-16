@@ -21,6 +21,7 @@ npm test
 
 ## Architecture & key decisions
 
+- **App shape**: Single-page application built from React components.
 - **State management**: Local React state for UI state + server data; no external state library to keep the surface area minimal for this scope.
 - **Data fetching**: `fetch` against the provided mock API (`/api/*`) with explicit loading and error states.
 - **Structure**: Feature-first folder layout under `src/features/incidents` with components and shared utilities split for clarity.
@@ -50,9 +51,10 @@ src/
 
 ## Screenshots
 
-- Desktop: `src/assets/img/desktop.png`
-- Mobile: `src/assets/img/mobile1.png` `src/assets/img/mobile2.png`
+<img src="docs/screenshots/desktop.png" alt="Desktop view" />
 
+<img src="docs/screenshots/mobile1.png" alt="Mobile view 1" />
+<img src="docs/screenshots/mobile2.png" alt="Mobile view 2" />
 
 ## Tooling / AI usage
 
