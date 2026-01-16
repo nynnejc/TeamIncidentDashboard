@@ -1,157 +1,59 @@
-# Team Incident Dashboard - Starter Project
+# Team Incident Dashboard
 
-A minimal React + TypeScript + Vite starter project for the coding challenge.
+A small incident management UI built with React + TypeScript on Vite.
 
-> **Note**: This is a starter project for a coding challenge. See [candidate-brief.md](candidate-brief.md) for the full requirements and task description.
+## How to run
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-
-### Installation
+Prereqs: Node.js 18+, npm.
 
 ```bash
 npm install
-```
-
-### Development
-
-```bash
 npm run dev
 ```
 
-Opens the app at [http://localhost:5173](http://localhost:5173)
+Open `http://localhost:5173`.
 
-### Testing
+## Tests
 
 ```bash
 npm test
 ```
 
-### Build
+## Architecture & key decisions
 
-```bash
-npm run build
-```
+- **State management**: Local React state for UI state + server data; no external state library to keep the surface area minimal for this scope.
+- **Data fetching**: `fetch` against the provided mock API (`/api/*`) with explicit loading and error states.
+- **Structure**: Feature-first folder layout under `src/features/incidents` with components and shared utilities split for clarity.
+- **Styling**: Tailwind classes with shared style tokens in `src/features/incidents/utils/incidentStyles.ts`; global defaults in `src/index.css`.
+- **Accessibility**: Semantic HTML, button elements for actions, labeled form controls, and dialog role/labels for the create modal.
 
-## Project Structure
+## Project structure (relevant)
 
 ```
 src/
-├── api/                  # Mock API with localStorage persistence
-│   ├── index.ts          # API exports
-│   ├── mockApi.ts        # API client with simulated delay
-│   ├── seedData.ts       # Default data for incidents and users
-│   ├── storage.ts        # localStorage persistence layer
-│   └── types.ts          # TypeScript types
-├── test/
-│   └── setup.ts          # Test setup
-├── App.css
-├── App.test.tsx
-├── App.tsx
-├── index.css
-├── main.tsx
-└── vite-env.d.ts
+  api/
+  features/
+    incidents/
+      components/
+      utils/
+      IncidentDashboard.tsx
+  test/
+  index.css
+  main.tsx
 ```
 
-## Mock API
+## Trade-offs & limitations
 
-The starter includes a mock API that intercepts `fetch()` requests to `/api/*` endpoints. Data is persisted in localStorage and survives page refreshes.
+- No focus trap or return-to-trigger handling in the modal; would add with more time.
+- Styling is Tailwind-only; would extract reusable variants if the design system expands.
+- Mock API only; no real persistence beyond localStorage in the starter mock.
 
-The mock API is automatically initialized in `main.tsx`.
+## Screenshots
 
-### Available Endpoints
+- Desktop: `src/assets/img/desktop.png`
+- Mobile: `src/assets/img/mobile1.png` `src/assets/img/mobile2.png`
 
-| Method | Endpoint             | Description            |
-| ------ | -------------------- | ---------------------- |
-| GET    | `/api/incidents`     | List all incidents     |
-| GET    | `/api/incidents/:id` | Get incident by ID     |
-| POST   | `/api/incidents`     | Create new incident    |
-| PATCH  | `/api/incidents/:id` | Update incident        |
-| DELETE | `/api/incidents/:id` | Delete incident        |
-| GET    | `/api/users`         | List all users         |
-| POST   | `/api/reset`         | Reset data to defaults |
 
-### Usage Example
+## Tooling / AI usage
 
-Use standard `fetch()` calls just like you would with a real REST API:
-
-```typescript
-// Fetch all incidents
-const response = await fetch("/api/incidents");
-const incidents = await response.json();
-
-// Fetch a single incident
-const response = await fetch("/api/incidents/inc-1");
-const incident = await response.json();
-
-// Create an incident
-const response = await fetch("/api/incidents", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    title: "New issue",
-    description: "Description here",
-    severity: "Medium",
-    assigneeId: "user-1",
-  }),
-});
-const newIncident = await response.json();
-
-// Update an incident
-const response = await fetch("/api/incidents/inc-1", {
-  method: "PATCH",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    status: "In Progress",
-    assigneeId: "user-2",
-  }),
-});
-const updated = await response.json();
-
-// Delete an incident
-await fetch("/api/incidents/inc-1", { method: "DELETE" });
-
-// Get users for assignee dropdown
-const response = await fetch("/api/users");
-const users = await response.json();
-
-// Reset data to defaults
-await fetch("/api/reset", { method: "POST" });
-```
-
-### Data Types
-
-```typescript
-type IncidentStatus = "Open" | "In Progress" | "Resolved";
-type IncidentSeverity = "Low" | "Medium" | "High" | "Critical";
-
-interface Incident {
-  id: string;
-  title: string;
-  description: string;
-  status: IncidentStatus;
-  severity: IncidentSeverity;
-  assigneeId: string | null;
-  createdAt: string;
-  updatedAt: string;
-  statusHistory: StatusHistoryEntry[];
-}
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-}
-```
-
-## Stack
-
-- **React 18** - UI library
-- **TypeScript** - Type safety
-- **Vite** - Build tool
-- **Vitest** - Testing
-- **React Testing Library** - Component testing
+- Used AI assistance for refactors and iterative styling tweaks.
