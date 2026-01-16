@@ -18,9 +18,9 @@
     font-family: "Danske Text", system-ui, sans-serif;
     line-height: 1.5;
     font-weight: 400;
-    color: #0a1a2a;
-    background-color: #eef3f8;
-    font-synthesis: none;
+    color: #003D5F;
+    background-color: #ffffff;
+    font-synthesis: weight;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -33,9 +33,7 @@
   body {
     margin: 0;
     min-height: 100vh;
-    background:
-      radial-gradient(circle at top, rgba(11, 90, 138, 0.15), transparent 55%),
-      linear-gradient(135deg, #eef3f8 0%, #f8fafc 60%);
+    background: #ffffff;
   }
 
   #root {
@@ -45,5 +43,41 @@
 
   a {
     color: inherit;
+  }
+
+  button,
+  [type="button"],
+  [type="submit"],
+  [type="reset"] {
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 0.6rem 1.25rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  button:hover,
+  [type="button"]:hover,
+  [type="submit"]:hover,
+  [type="reset"]:hover {
+    background: inherit;
+  }
+
+  button:focus-visible,
+  [type="button"]:focus-visible,
+  [type="submit"]:focus-visible,
+
+
+  button:disabled,
+  [type="button"]:disabled,
+  [type="submit"]:disabled,
+  [type="reset"]:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
   }
 }

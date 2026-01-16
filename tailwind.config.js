@@ -8,9 +8,9 @@ export default {
         serif: ["\"Danske Text\"", "serif"],
       },
       colors: {
-        ink: {
-          strong: "#0a1a2a",
-          muted: "#5a6b7d",
+        danskeblue: {
+          DEFAULT: "#003D5F",
+          strong: "#003D5F",
         },
         surface: {
           DEFAULT: "#fefefe",
